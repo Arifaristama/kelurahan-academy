@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layouts/main}">
+<head>
+    <meta charset="UTF-8">
+    <title>Kelurahan</title>
+</head>
+<body>
+<div class="container-fluid" layout:fragment="content">
+    <h1>Kelurahan</h1>
+    <form>
+        <div class="row">
+            <div class="col-12">
+                <div class="mb-3"></div>
+                <label for="id" class="form-label">ID</label>
+                <input type="text" class="form-control" id="id" th:value="${kelurahan.id}" disabled>
+            </div>
+            <div class="mb-3">
+                <label for="nama" class="form-label">Nama</label>
+                <input type="text" class="form-control" id="nama" th:value="${kelurahan.nama}" disabled>
+            </div>
+            <div class="mb-3">
+                <label for="kecamatan" class="form-label">Kecamatan</label>
+                <input type="text" class="form-control" id="kecamatan" th:value="${kelurahan.kecamatan}" disabled>
+            </div>
+        </div>
+        <div>
+            <h3>Dusun</h3>
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header">
+                            Daftar Dusun
+                        </div>
+                        <div class="card-body">
+                            <table class="table table-striped">
+                                <thead>
+                                <tr>
+                                    <th scope="col">No</th>
+                                    <th scope="col">Nama</th>
+                                    <th scope="col">Action</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr th:each="data, no : ${kelurahan.dusun}">
+                                    <th scope="row" th:text="${no.index +1}">1</th>
+                                    <td th:text="${data.nama}">Mark</td>
+                                    <td>
+                                        <a th:href="@{~/kelurahan/kelurahan/detail/{kelurahanId}/dusun/{dusunId}(kelurahanId=${kelurahan.id}, dusunId=${data.id})}" class="btn btn-primary">
+                                            Detail
+                                        </a>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+</body>
+</html>

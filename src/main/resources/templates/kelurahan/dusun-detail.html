@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layouts/main}">
+<head>
+    <meta charset="UTF-8">
+    <title>Dusun</title>
+</head>
+<body>
+<div class="container-fluid" layout:fragment="content">
+    <form>
+        <div class="row">
+            <div class="col-12">
+                <div class="mb-3">
+                    <label for="id" class="form-label">ID</label>
+                    <input type="text" class="form-control" id="id" th:value="${kelurahan.id}" disabled>
+                </div>
+                <div class="mb-3">
+                    <label for="nama" class="form-label">Nama</label>
+                    <input type="text" class="form-control" id="nama" th:value="${kelurahan.nama}" disabled>
+                </div>
+            </div>
+        </div>
+        <div>
+            <h3>RW</h3>
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header">
+                            Daftar RW
+                        </div>
+                        <div class="card-body">
+                            <table class="table table-striped">
+                                <thead>
+                                <tr>
+                                    <th scope="col">No</th>
+                                    <th scope="col">Nama</th>
+                                    <th scope="col">Ketua RW</th>
+                                    <th scope="col">Action</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr th:each="Dusun, no : ${dusun.}">
+                                    <th scope="row" th:text="${no.index +1}">1</th>
+                                    <td th:text="${Dusun.nama}">Mark</td>
+                                    <td th:text="${Dusun.}"
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+</body>
+</html>
